@@ -1,0 +1,33 @@
+body {
+  max-width: 960px;
+  margin: auto;
+}
+
+textarea {
+  resize: none;
+}
+
+#min, #max {
+  width: 24px;
+}
+
+#words {
+  width: 36px;
+}
+
+#top, #bottom {
+  justify-content: center;
+  display: flex;
+}
+
+#phonemes {
+  width: 50%;
+}
+
+#changes, #filters {
+  width: 25%;
+}
+
+#list {
+  text-align: center;
+}

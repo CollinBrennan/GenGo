@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>repl.it</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <form id="form" onsubmit="takeInput(); return false;">
+      <div id="top">
+        <textarea id="phonemes" spellcheck="false" rows="10" required>C: p t k m n s w l j,&#10;V: a e i o u,&#10;N: m n</textarea>
+        <textarea id="changes" spellcheck="false" rows="10">nm: m n,&#10mn: m n,&#10nn: n,&#10mm: m</textarea>
+        <textarea id="filters" spellcheck="false" rows="10">aa, ii, uu, oo, ee, ji, wu, wo, ti</textarea>
+      </div>
+      <div id="bottom">
+          <label for="structures">Syllable structures: </label>
+          <input id="structures" type="text" spellcheck="false" value="(C)V(N)" required>
+
+          <label for="min">Syllable min: </label>
+          <input id="min" type="number" value="1" min="1" max="9" required>
+
+          <label for="max">Syllable max: </label>
+          <input id="max" type="number" value="3" min="1" max="9" required>
+          
+          <label for="words">Words: </label>
+          <input id="words" type="number" value="100" min="1" max="999" required>
+
+          <label for="duplicates">Duplicates</label>
+          <input id="duplicates" type="checkbox" checked="true">
+          
+          <input type="reset" value="Defaults">
+          <input type="submit" value="Generate">
+        </div>
+      </div>
+    </form>
+    <div id="list"></div>
+    <script src="script.js"></script>
+  </body>
+</html>
