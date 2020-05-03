@@ -7,34 +7,66 @@
     <link href="style.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
-    <form id="form" onsubmit="takeInput(); return false;">
-      <div id="top">
-        <textarea id="phonemes" spellcheck="false" rows="10" required>C: p t k m n s w l j,&#10;V: a e i o u,&#10;N: m n</textarea>
-        <textarea id="changes" spellcheck="false" rows="10">nm: m n,&#10mn: m n,&#10nn: n,&#10mm: m</textarea>
-        <textarea id="filters" spellcheck="false" rows="10">aa, ii, uu, oo, ee, ji, wu, wo, ti</textarea>
-      </div>
-      <div id="bottom">
-          <label for="structures">Syllable structures: </label>
-          <input id="structures" type="text" spellcheck="false" value="(C)V(N)" required>
-
-          <label for="min">Syllable min: </label>
-          <input id="min" type="number" value="1" min="1" max="9" required>
-
-          <label for="max">Syllable max: </label>
-          <input id="max" type="number" value="3" min="1" max="9" required>
-          
-          <label for="words">Words: </label>
-          <input id="words" type="number" value="100" min="1" max="999" required>
-
-          <label for="duplicates">Duplicates</label>
-          <input id="duplicates" type="checkbox" checked="true">
-          
-          <input type="reset" value="Defaults">
-          <input type="submit" value="Generate">
+    <nav>
+      <a href="index.html"><span id="character">語</span>GenGo</a>
+    </nav>
+    <div class="page">
+      <form id="form" onsubmit="takeInput(); return false;">
+        <div id="top">
+          <div class="areabox">
+            <label for="phonemes">Phonemes</label>
+            <textarea id="phonemes" spellcheck="false" rows="10" required>C: p t k m n s w l j,&#10;V: a e i o u,&#10;N: m n</textarea>
+            
+          </div>
+          <div div class="areabox">
+            <label for="changes">Changes</label>
+            <textarea id="changes" spellcheck="false" rows="10">nm: m n,&#10mn: m n,&#10nn: n,&#10mm: m</textarea>
+          </div>
         </div>
-      </div>
-    </form>
-    <div id="list"></div>
+        <div id="bottom">
+          <div class="pair">
+            <label for="filters">Filters&nbsp;</label>
+            <input id="filters" type="text" spellcheck="false" value="aa, ii, uu, oo, ee, ji, wu, wo, ti" required>
+          </div>
+          <div class="pair">
+            <label for="patterns">Patterns&nbsp;</label>
+            <input id="patterns" type="text" spellcheck="false" value="(C)V(N)" required>
+          </div>
+          <div class="pair">
+            <div>
+              <label for="min">Syllable min</label>
+              <input id="min" type="number" value="1" min="1" max="9" required>
+            </div>
+            <div>
+              <label for="max">Syllable max</label>
+              <input id="max" type="number" value="3" min="1" max="9" required>
+            </div>
+            <div>
+              <label for="words">Words</label>
+              <input id="words" type="number" value="100" min="1" max="999" required>
+            </div>
+            <div>
+              <label for="duplicates">Duplicates</label>
+              <input id="duplicates" type="checkbox" checked="true">
+            </div>
+            <div>
+              <label for="newline">New line</label>
+              <input id="newline" type="checkbox" checked="true">
+            </div>
+            <div>
+              <input type="submit" value="Generate">
+            </div>
+          </div>
+        </div>
+      </form>
+      <div id="list"></div>
+    </div>
+    <br><br><br>
+    <footer>
+      <a href="guide.html">📖Guide</a>
+      <a href="https://github.com/CollinBrennan/GenGo">🐱GitHub</a>
+      <a href="index.html">💰Tip</a>
+    </footer>
     <script src="script.js"></script>
   </body>
 </html>

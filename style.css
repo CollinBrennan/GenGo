@@ -1,10 +1,100 @@
 body {
-  max-width: 960px;
-  margin: auto;
+  font-family: arial;
+  font-size: 16px;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+nav, footer {
+  background-color: #333333;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+nav { 
+  font-size: 24px;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+  padding: 10px;
 }
 
 textarea {
+  -webkit-appearance: none;
   resize: none;
+  font-size: 16px;
+  font-family: monospace;
+  border-radius: 10px;
+  width: 90%;
+}
+
+input {
+  -webkit-appearance: none;
+}
+
+input[type=checkbox] {
+  -webkit-appearance: checkbox;
+}
+
+input[type=submit], input[type=reset] {
+  color: white;
+  background-color: #333333;
+  border: 1px solid #333333;
+  font-weight: bold;
+  font-size: 16px;
+  border-radius: 100px;
+  padding: 4px;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+input[type=text], input[type=number] {
+  border-radius: 20px;
+  border: 1px solid grey;
+  padding: 5px;
+}
+
+input[type=text] {
+  flex: 1;
+}
+
+.page {
+  max-width: 960px;
+  margin: auto;
+  padding: 5px;
+}
+
+.areabox {
+  font-weight: bold;
+  display: block;
+  flex-grow: 1;
+}
+
+.pair {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  font-weight: bold;
+}
+
+.pair > div {
+  padding-right: 2%;
+}
+
+#character {
+  font-weight: bold;
+  font-size: 22px;
 }
 
 #min, #max {
@@ -15,19 +105,15 @@ textarea {
   width: 36px;
 }
 
-#top, #bottom {
-  justify-content: center;
+#top {
   display: flex;
 }
 
-#phonemes {
-  width: 50%;
+#bottom {
+  padding-top: 4px;
 }
 
-#changes, #filters {
-  width: 25%;
-}
 
 #list {
-  text-align: center;
+  text-align: left;
 }

@@ -4,9 +4,20 @@
 // -max possible words counter
 // -make phonetic groups possible in replacmenets and filters (VV: V)
 // -add LITERAL notation ('C')V(N), C'V'N
+// -add copy list button
+// -Generate paragraph by default, add new line button
+// -Remove spaces from final word
+// -Capitalization radio (none, all, random)
 
 // To Fix:
-// -POSSIBLY add spaces to forbidden characters in sequences (not a big problem)
+// -Page reloads when no replacements entered
+// -Rename structures/sequences to patterns
+// -Possibly make filters a text input
+
+// Look of site:
+// -night mode
+// -fix form layout
+// -fucking decide on 1280px or 960px for max width
 
 function generate(
   _min,
@@ -115,7 +126,7 @@ function takeInput() {
   const myMin = Number(document.getElementById("min").value)
   const myMax = Number(document.getElementById("max").value)
   const myCount = Number(document.getElementById("words").value)
-  const mySequences = listFormat(document.getElementById("structures").value)
+  const mySequences = listFormat(document.getElementById("patterns").value)
   const myFilters = listFormat(document.getElementById("filters").value)
   const myReplacements = format(document.getElementById("changes").value, /[^\s,]+\s*:[^,]+/g)
   const myPhonemes = format(document.getElementById("phonemes").value, /[^\s,]\s*:[^,]+/g)
@@ -139,7 +150,7 @@ function takeInput() {
 // Information
   const lexiconLength = document.createElement("p")
   lexiconLength.innerHTML = myLexicon.length + ' words generated'
-  list.appendChild(document.createElement("br"))
+  //list.appendChild(document.createElement("br"))
   list.appendChild(lexiconLength)
 // Display list
   for (item of myLexicon) {
