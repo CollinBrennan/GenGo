@@ -1,5 +1,5 @@
 body {
-  background-color: #EEE;
+  background-color: hsl(0, 0%, 99%);
   font-family: arial;
   font-size: 16px;
   font-weight: bold;
@@ -17,6 +17,7 @@ header, footer {
 a {
   color: white;
   text-decoration: none;
+  padding: 4px;
 }
 
 header {
@@ -30,29 +31,36 @@ footer {
   left: 0;
 }
 
-#content {
+/* Font Awesome icons */
+.fa-align-center {
+  position: relative;
+  vertical-align: middle;
+  margin-bottom: 4px;
+  font-size: 20px;
+}
+
+.content {
   max-width: 960px;
   margin-left: auto;
   margin-right: auto;
-  padding-top: 16px;
-  padding-bottom: 64px;
+  margin-top: 16px;
+  margin-bottom: 64px;
 }
 
-.textareas, .inputs > div {
+.textareas {
+  width: 100%;
   display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  align-content: flex-start;
+  justify-content: space-between;
 }
 
 .box {
-  display: block;
-  flex: 1;
-}
-
-.box-left {
-  padding-right: 4px;
-}
-
-.box-right {
-  padding-left: 4px;
+  flex-grow: 2;
+  margin-left: 4px;
+  margin-right: 4px;
+  margin-bottom: 4px;
 }
 
 textarea, input {
@@ -61,20 +69,23 @@ textarea, input {
 }
 
 textarea {
+  position: relative;
   font-family: Arial;
   resize: none;
-  width: 99%;
-  height: 128px;
-}
-
-.inputs > div {
-  justify-content: center;
-  align-items: center;
+  width: 98%;
+  height: 200px;
   padding: 4px;
 }
 
+.inputs > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
 .list > label, .options > label {
-  padding-right: 4px;
+  margin-right: 4px;
 }
 
 .list > input {
@@ -82,11 +93,12 @@ textarea {
 }
 
 .options {
+  display: flex;
   flex-wrap: wrap;
 }
 
-.options > label {
-  padding-left: 20px;
+.options > div {
+    margin-right: 15px;
 }
 
 input {
@@ -100,6 +112,7 @@ input[type=submit], input[type=checkbox] {
 
 input[type=submit] {
   border: none;
+  border-radius: 5px;
   background-color: #333;
   color: white;
   font-weight: bold;
@@ -110,10 +123,12 @@ input[type=submit] {
 }
 
 input[type=checkbox] {
+  vertical-align: middle;
+  margin-bottom: 4px;
   top: 0;
   left: 0;
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
 }
 
@@ -121,17 +136,10 @@ input[type=checkbox]:checked {
   background-color: #333;
 }
 
-input[type=checkbox]:after {
-  top: 9px;
-	left: 9px;
-	width: 8px;
-	height: 8px;
-	border-radius: 50%;
-	background: white;
-}
-
 hr {
   border: 1px dotted lightgrey;
+  margin: 0;
+  padding: 0;
 }
 
 #info, #lexicon {
@@ -140,8 +148,12 @@ hr {
 
 #info {
   font-style: italic;
+  margin-top: 6px;
+  margin-bottom: 4px;
 }
 
 #lexicon {
+  display: block;
   white-space: pre-wrap;
+  padding: 4px;
 }

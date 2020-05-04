@@ -5,25 +5,26 @@
     <meta name="viewport" content="width=device-width">
     <title>repl.it</title>
     <link href="style.css" rel="stylesheet" type="text/css" />
+    <script src="https://kit.fontawesome.com/21c08e5dcf.js" crossorigin="anonymous"></script>
   </head>
   <body>
 
     <header>
-      <a href="index.html">語GenGo</a>
+      <a href="index.html"><i class="fas fa-align-center"></i>GenGo</a>
     </header>
 
-    <div id="content">
+    <div class="content">
       
       <form onsubmit="takeInput(); return false;">
 
         <div class="textareas">
 
-          <div class="box box-left">
+          <div class="box">
             <label for="phonemes">Phonemes</label>
             <textarea id="phonemes" spellcheck="false" required>C: p t k m n s w l j,&#10;V: a e i o u,&#10;N: m n</textarea>
           </div>
 
-          <div class="box box-right">
+          <div class="box">
             <label for="changes">Changes</label>
             <textarea id="changes" spellcheck="false">nm: m n,&#10mn: m n,&#10nn: n,&#10mm: m</textarea>
           </div>
@@ -43,17 +44,29 @@
           </div>
 
           <div class="options">
-            <input id="generate" type="submit" value="Generate">
-            <label for="words">Words</label>
-            <input id="words" type="number" min="1" max="9999" value="100" required>
-            <label for="min">Syllable Min</label>
-            <input id="min" type="number" min="1" max="9" value="1" required>
-            <label for="max">Syllable Max</label>
-            <input id="max" type="number" min="1" max="9" value="3" required>
-            <label for="duplicates">Duplicates</label>
-            <input id="duplicates" type="checkbox" checked="true">
-            <label for="new">New line</label>
-            <input id="new" type="checkbox">
+            <div>
+              <input id="generate" type="submit" value="Generate">
+            </div>
+            <div>
+              <label for="words">Words</label>
+              <input id="words" type="number" min="1" max="9999" value="100" required>
+            </div>
+            <div>
+              <label for="min">Syllable Min</label>
+              <input id="min" type="number" min="1" max="9" value="1" required>
+            </div>
+            <div>
+              <label for="max">Syllable Max</label>
+              <input id="max" type="number" min="1" max="9" value="3" required>
+            </div>
+            <div>
+              <label for="duplicates">Duplicates</label>
+              <input id="duplicates" type="checkbox" checked="true">
+            </div>
+            <div>
+              <label for="new">List</label>
+              <input id="new" type="checkbox">
+            </div>
           </div>
 
         </div>
@@ -73,9 +86,9 @@
     </div>
 
     <footer>
-      <a href="guide.html">📖Guide</a>
-      <a href="https://github.com/CollinBrennan/GenGo">🐱GitHub</a>
-      <a href="index.html">💰Tip</a>
+      <a href="guide.html"><i class="fas fa-book"></i> Guide</a>
+      <a href="https://github.com/CollinBrennan/GenGo"><i class="fab fa-github"></i> GitHub</a>
+      <a href="index.html"><i class="fas fa-coins"></i> Tip</a>
     </footer>
     <script src="script.js"></script>
   </body>
