@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -8,16 +8,145 @@
     <script src="https://kit.fontawesome.com/21c08e5dcf.js" crossorigin="anonymous"></script>
   </head>
   <body>
+
     <header>
-      <a href="index.html"><i class="fas fa-align-center"></i>GenGo</a>
-    </header>
-    <div class="content">
-      <em>Guide coming soon™</em>
-    </div>
-    <footer>
+      <a href="index.html"><i class="fas fa-align-center"></i> GenGo</a>
       <a href="guide.html"><i class="fas fa-book"></i> Guide</a>
       <a href="https://github.com/CollinBrennan/GenGo"><i class="fab fa-github"></i> GitHub</a>
-      <a href="index.html"><i class="fas fa-coins"></i> Tip</a>
+    </header>
+
+    <nav>
+      <a href="#gAbout">About</a>
+      <a href="#gCharacters">Characters</a>
+      <a href="#gPatterns">Patterns</a>
+      <a href="#gRewrites">Rewrites</a>
+      <a href="#gFilters">Filters & Options</a>
+    </nav>
+
+    <div class="content">
+
+      <hr>
+
+      <h2 id="gGbout">About</h2>
+      <p>GenGo is generator that makes words from different groups of characters. It is most often used for constructed languages and worldbuilding. It's good for anything from creating a lexicon for your conlang to names for your fictional population.</p>
+
+      <hr>
+
+      <h2 id="gCharacters">Characters</h2>
+      <p>Characters are the letters or symbols that make up your words. </p>
+      <h3>Syntax</h3>
+
+      <p>The basic syntax for a character group is...</p>
+      <blockquote><span class="c1">X</span><span class="c2">:</span> <span class="c3">sh å Д β タ 語 음</span><span class="c4">,</span></blockquote>
+      <ul>
+        <li>A single character as a <span class="c1">name</span> for the pattern to recognize</li>
+        <li>A <span class="c2">colon</span> to seperate the group name and its characters</li>
+        <li>The <span class="c3">characters</span> that make up the group, seperated by spaces</li>
+        <li>A <span class="c4">comma</span> to seperate groups</li>
+      </ul>
+      <p>Character groups can be written on the same line or across several lines, as long as they are seperated by a comma.</p>
+
+      <h3 id="gWeights">Weights</h3>
+      <p>You can assign weight to a character to make it more likely to be picked using an <span class="c1">asterisk</span> followed by a natural <span class="c2">number</span> up to 100.</p>
+      <p>In this example...</p>
+      <blockquote>C: p t k m n s w<span class="c1">*</span><span class="c2">5</span> l j</blockquote>
+      <p>...the letter 'w' is 5 times more likely to be picked than the rest of the characters individually.</p>
+
+      <hr>
+
+      <h2 id="gPatterns">Patterns</h2>
+      <p>Patterns are the syllable structure of your words. If the pattern contains the name of a character group, the character will be replaced by one of the characters in its group at random. Multiple patterns can be used but need to be seperated by commas.</p>
+      <p>For example, if you had the pattern 'CVC' and these character groups...</p>
+      <blockquote>C: p t k,<br>V: a i</blockquote>
+      <p>...each character in the pattern would be replaced with a random character within its group...</p>
+      <ul>
+        <li>C → k</li>
+        <li>V → a</li>
+        <li>C → t</li>
+      </ul>
+      <p>...and the final outputted word would be 'kat'.</p>
+      <p>If a pattern contains a character that isn't the name of a group, the character itself is added to the word. For example, if you had the same characters from the above example, but instead had the pattern 'CVs'...</p>
+      <ul>
+        <li>C → k</li>
+        <li>V → a</li>
+        <li>s → s</li>
+      </ul>
+      <p>...'s' in the pattern isn't the name of a group so it is just added to the word 'kas'.</p>
+      <h3>Parentheses ( )</h3>
+      <p>Any part of a pattern within parantheses has a chance to be filtered out.</p>
+      <p>The pattern 'CV(C)' can output...</p>
+      <ul>
+        <li>ka<span class="c1">(</span>t<span class="c1">)</span> → kat</li>
+        <li><span class="hide">ka(t)</span> → ka</li>
+      </ul>
+      <h3>Brackets [ ]</h3>
+      <p>Any part of a pattern within brackets picks from one of the choices seperated by spaces.</p>
+      <p>The pattern 'CV[C s]' can output...</p> 
+      <ul>
+        <li>ka<span class="c1">[</span>t s<span class="c1">]</span> → kat</li>
+        <li><span class="hide">ka[t s]</span> → kas</li>
+      </ul>
+      <p>Brackets and parentheses can both be nested any amount of times...</p>
+      <ul>
+        <li>ka(t(s)) → kats</li>
+        <li><span class="hide">ka(t(s))</span> → kat</li>
+        <li><span class="hide">ka(t(s))</span> → ka</li>
+      </ul>
+      <ul>
+        <li>ka([t d][s z]) → ka</li>
+        <li><span class="hide">ka([t d][s z])</span> → kads</li>
+        <li><span class="hide">ka([t d][s z])</span> → kats</li>
+        <li><span class="hide">ka([t d][s z])</span> → katz</li>
+        <li><span class="hide">ka([t d][s z])</span> → kadz</li>
+      </ul>
+
+      <hr>
+
+      <h2 id="gRewrites">Rewrites</h2>
+      <p>Sometimes there are certain combinations of characters that you don't want in your words. That's where rewrites come in.</p>
+      
+      <h3>Syntax</h3>
+      <p>Rewrites are written very similarly to character groups...</p>
+      <blockquote><span class="c1">mn</span><span class="c2">:</span> <span class="c3">m n</span><span class="c4">,</span></blockquote>
+      <ul>
+        <li>The <span class="c1">characters</span> to be replaced</li>
+        <li>A <span class="c2">colon</span> to seperate the cluster and its replacement characters</li>
+        <li>The <span class="c3">characters</span> that can replace the cluster, seperated by spaces</li>
+        <li>A <span class="c4">comma</span> to seperate rewrites</li>
+      </ul>
+      <p>For example, if you had the word 'samna' and the cluster rewrite from above...</p>
+      <ul>
+        <li>sa<span class="c1">mn</span>a → sa<span class="c3">m</span>a</li>
+        <li><span class="hide">samna</span> → sa<span class="c3">n</span>a</li>
+      </ul>
+
+      <h3>Tips</h3>
+      <p>If you want the cluster to just be removed from the word, don't enter anything for the replacement characters. Make sure to still seperate it with a comma if there are multiple rewrites...</p>
+      <blockquote>
+        nm: ,<br>
+        mn: m n
+      </blockquote>
+      <ul>
+        <li>sa<span class="c1">nm</span>a → saa</li>
+      </ul>
+      <p>You can also use <a href="#gWeights">character weights</a> in rewrites.</p>
+
+      <hr>
+     
+      <h2 id="gFilters">Filters & Options</h2>
+      <p>Filters - If a word contains any of the characters or clusters, the whole word will be removed from the final word list.</p>
+      <p>Words - Total number of words to be generated.</p>
+      <p>Syllable min and max - The minimum and maximum number of patterns allowed in a word</p>
+      <p>Duplicates - Removes any duplicates in the final word list. The more complicated your words can be, the less likely duplicates are to be generated</p>
+      <p>List - Displays each word on a new line instead of a paragraph</p>
+
+      <hr>
+
+    </div>
+
+    <footer>
+      Copyright <i class="far fa-copyright"></i> 2020 · GenGo is free to use · <a href="https://www.paypal.me/ColBren" target="_blank"><i class="fas fa-coins"></i> Tips</a> are much appreciated
     </footer>
+
   </body>
 </html>

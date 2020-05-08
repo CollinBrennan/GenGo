@@ -10,7 +10,9 @@
   <body>
 
     <header>
-      <a href="index.html"><i class="fas fa-align-center"></i>GenGo</a>
+      <a href="index.html"><i class="fas fa-align-center"></i> GenGo</a>
+      <a href="guide.html"><i class="fas fa-book"></i> Guide</a>
+      <a href="https://github.com/CollinBrennan/GenGo"><i class="fab fa-github"></i> GitHub</a>
     </header>
 
     <div class="content">
@@ -20,13 +22,13 @@
         <div class="textareas">
 
           <div class="box">
-            <label for="phonemes">Phonemes</label>
-            <textarea id="phonemes" spellcheck="false" required>C: p t k m n s w l j,&#10;V: a e i o u,&#10;N: m n</textarea>
+            <label for="characters">Characters</label>
+            <textarea id="characters" spellcheck="false" required>C: p t k m n s w l j,&#10;V: a e i o u,&#10;N: m n</textarea>
           </div>
 
           <div class="box">
-            <label for="changes">Changes</label>
-            <textarea id="changes" spellcheck="false">nm: m n,&#10mn: m n,&#10nn: n,&#10mm: m</textarea>
+            <label for="rewrites">Rewrites</label>
+            <textarea id="rewrites" spellcheck="false">nm: m n,&#10mn: m n,&#10nn: n,&#10mm: m</textarea>
           </div>
           
         </div>
@@ -34,18 +36,20 @@
         <div class="inputs">
 
           <div class="list">
-            <label for="filters">Filters</label>
-            <input id="filters" type="text" spellcheck="false" value="aa, ii, uu, oo, ee, ji, wu, wo, ti">
+            <label for="patterns">Patterns</label>
+            <input id="patterns" type="text" spellcheck="false" value="(C)V(N)" required>
           </div>
 
           <div class="list">
-            <label for="patterns">Patterns</label>
-            <input id="patterns" type="text" spellcheck="false" value="(C)V(N)" required>
+            <label for="filters">Filters</label>
+            <input id="filters" type="text" spellcheck="false" value="aa, ii, uu, oo, ee, ji, wu, wo, ti">
           </div>
 
           <div class="options">
             <div>
               <input id="generate" type="submit" value="Generate">
+              <button id="copy" type="button" onclick="copyToClipboard();"><i class="far fa-clipboard"></i></button>
+              <button id="ipa" type="button" onclick="showIPA();">IPA</button>
             </div>
             <div>
               <label for="words">Words</label>
@@ -73,23 +77,118 @@
 
       </form>
 
-      <hr>
-
-      <div id="info">
+      <div id="ipaChart" hidden>
+        <hr>
+        <table>
+          <button class="letter">ɨ</button>
+          <button class="letter">ʉ</button>
+          <button class="letter">ɯ</button>
+          <button class="letter">ɪ</button>
+          <button class="letter">ʏ</button>
+          <button class="letter">ʊ</button>
+          <button class="letter">ø</button>
+          <button class="letter">ɘ</button>
+          <button class="letter">ɵ</button>
+          <button class="letter">ɤ</button>
+          <button class="letter">ɛ</button>
+          <button class="letter">œ</button>
+          <button class="letter">ɜ</button>
+          <button class="letter">ɞ</button>
+          <button class="letter">ʌ</button>
+          <button class="letter">ɔ</button>
+          <button class="letter">æ</button>
+          <button class="letter">ɐ</button>
+          <button class="letter">ɶ</button>
+          <button class="letter">ɑ</button>
+          <button class="letter">ɒ</button>
+          <button class="letter">ʈ</button>
+          <button class="letter">ɖ</button>
+          <button class="letter">ɟ</button>
+          <button class="letter">ɢ</button>
+          <button class="letter">ʔ</button>
+          <button class="letter">ɱ</button>
+          <button class="letter">ɳ</button>
+          <button class="letter">ɲ</button>
+          <button class="letter">ɴ</button>
+          <button class="letter">ʙ</button>
+          <button class="letter">ʀ</button>
+          <button class="letter">ⱱ</button>
+          <button class="letter">ɾ</button>
+          <button class="letter">ɽ</button>
+          <button class="letter">ɸ</button>
+          <button class="letter">β</button>
+          <button class="letter">θ</button>
+          <button class="letter">ð</button>
+          <button class="letter">ʃ</button>
+          <button class="letter">ʒ</button>
+          <button class="letter">ʂ</button>
+          <button class="letter">ʐ</button>
+          <button class="letter">ç</button>
+          <button class="letter">ʝ</button>
+          <button class="letter">ɣ</button>
+          <button class="letter">χ</button>
+          <button class="letter">ʁ</button>
+          <button class="letter">ħ</button>
+          <button class="letter">ʕ</button>
+          <button class="letter">ɦ</button>
+          <button class="letter">ɬ</button>
+          <button class="letter">ɮ</button>
+          <button class="letter">ʋ</button>
+          <button class="letter">ɹ</button>
+          <button class="letter">ɻ</button>
+          <button class="letter">ɰ</button>
+          <button class="letter">ɭ</button>
+          <button class="letter">ʎ</button>
+          <button class="letter">ʟ</button>
+          <button class="letter">ʘ</button>
+          <button class="letter">ǀ</button>
+          <button class="letter">ǃ</button>
+          <button class="letter">ǂ</button>
+          <button class="letter">ǁ</button>
+          <button class="letter">ɓ</button>
+          <button class="letter">ɗ</button>
+          <button class="letter">ʄ</button>
+          <button class="letter">ɠ</button>
+          <button class="letter">ʛ</button>
+          <button class="letter">ʍ</button>
+          <button class="letter">ɥ</button>
+          <button class="letter">ʜ</button>
+          <button class="letter">ʢ</button>
+          <button class="letter">ʡ</button>
+          <button class="letter">ɕ</button>
+          <button class="letter">ʑ</button>
+          <button class="letter">ɺ</button>
+          <button class="letter">ɧ</button>
+          <button class="letter">t͡s</button>
+          <button class="letter">t͡ʃ</button>
+          <button class="letter">t͡ɕ</button>
+          <button class="letter">ʈ͡ʂ</button>
+          <button class="letter">d͡z</button>
+          <button class="letter">d͡ʒ</button>
+          <button class="letter">d͡ʑ</button>
+          <button class="letter">ɖ͡ʐ</button>
+          <button class="letter">ʰ</button>
+          <button class="letter">ʲ</button>
+          <button class="letter">ʷ</button>
+        </table>
       </div>
 
-      <hr>
+      <div id="divider" hidden>
+        <hr>
+        <div id="info"></div>
+        <hr>
+      </div>
 
-      <div id="lexicon">
-      </div> 
+      <div id="lexicon"></div>
+
+      <hr>
 
     </div>
 
     <footer>
-      <a href="guide.html"><i class="fas fa-book"></i> Guide</a>
-      <a href="https://github.com/CollinBrennan/GenGo"><i class="fab fa-github"></i> GitHub</a>
-      <a href="index.html"><i class="fas fa-coins"></i> Tip</a>
+      Copyright <i class="far fa-copyright"></i> 2020 · GenGo is free to use · <a href="https://www.paypal.me/ColBren" target="_blank"><i class="fas fa-coins"></i> Tips</a> are much appreciated
     </footer>
+
     <script src="script.js"></script>
   </body>
 </html>

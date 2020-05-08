@@ -1,37 +1,35 @@
  // Ideas:
 // -rewrite boxes in the correct way after forms are submitted
-// -phoneme weights
 // -max possible words counter
-// -make phonetic groups possible in replacmenets and filters (VV: V)
-// -add LITERAL notation ('C')V(N), C'V'N
-// -add copy list button
 // -Remove spaces from final word
+// -night mode
+// -add ipa chart under form
+
+// To Do:
+// -add LITERAL notation ('C')V(N), C'V'N
+// -make phonetic groups possible in replacemenets and filters (VV: V)
 
 // To Fix:
-// -Page reloads when no replacements entered
-// -Rename structures/sequences to patterns
-
-// Look of site:
-// -night mode
+// 
 
 function generate(
   _min,
   _max,
   _count,
-  _sequences,
+  _patterns,
   _filters,
-  _changes,
-  _phonemes,
+  _rewrites,
+  _characters,
   _duplicates
 ) {
 // Variables
   const min = _min
   const max = _max < min ? min : _max
   const count = _count
-  const sequences = unique(_sequences)
+  const patterns = unique(_patterns)
   const filters = unique(_filters)
-  const changes = new Map(_changes)
-  const phonemes = new Map(_phonemes)
+  const rewrites = new Map(_rewrites)
+  const characters = new Map(_characters)
   const duplicates = _duplicates
   let lexicon = []
 // Functions
@@ -48,32 +46,32 @@ function generate(
     let syllableCount = random(min, max + 1)
     let template = ''
     for (let i = 0; i < syllableCount; i++) {
-      template += sequences[random(0, sequences.length)]
+      template += patterns[random(0, patterns.length)]
     }
   // Pick random letter(s) in brackets
-    const tempRegex = /\[([^\[]*?)\]/
-    while (tempRegex.test(template)) {
-      let matches = tempRegex.exec(template)[1].split(/\s+/)
-      template = template.replace(tempRegex, matches[random(0, matches.length)])
+    const bRegex = /\[([^\[]*?)\]/
+    while (bRegex.test(template)) {
+      let matches = bRegex.exec(template)[1].split(/\s+/)
+      template = template.replace(bRegex, matches[random(0, matches.length)])
     }
   // Make word from template
     let word = ''
-    for (let value of template) {
-      let list = phonemes.get(value)
-      word += list !== undefined ? list[random(0, list.length)] : value
+    for (let key of template) {
+      let values = characters.get(key)
+      word += values && values.length > 0 ? values[random(0, values.length)] : key
     }
   // Randomly keep or delete letters in parentheses
-    const wordRegex = /\(([^\(]*?)\)/
-    while (wordRegex.test(word)) {
-      word = word.replace(wordRegex, random(0, 2) === 1 ? wordRegex.exec(word)[1] : '')
+    const pRegex = /\(([^\(]*?)\)/
+    while (pRegex.test(word)) {
+      word = word.replace(pRegex, random(0, 2) === 1 ? pRegex.exec(word)[1] : '')
     }
-  // Replace
-    for (let key of changes.keys()) {
-      let list = changes.get(key)
+  // Rewrites
+    for (let key of rewrites.keys()) {
+      let values = rewrites.get(key)
       while (word.includes(key))
-        word = word.replace(key, list.length > 0 ? list[random(0, list.length)] : '')
+        word = word.replace(key, values.length > 0 ? values[random(0, values.length)] : '')
     }
-  // Filter or add word to lexicon
+  // Filters
     let push = true
     for (let filter of filters) {
       if (word.includes(filter)) {
@@ -90,10 +88,10 @@ function generate(
       lexicon = unique(lexicon)
     }
 // Return
-  console.log('Phonemes:', phonemes, '\n')
-  console.log('Changes:', changes, '\n')
+  console.log('Characters:', characters, '\n')
+  console.log('Rewrites:', rewrites, '\n')
   console.log('Filters:', filters, '\n')
-  console.log('Sequences:', sequences, '\n')
+  console.log('Patterns:', patterns, '\n')
   return lexicon
 }
 
@@ -101,14 +99,31 @@ function takeInput() {
 // Functions
   function format(element, regex) {
     const array = []
+  // Create the arrays
     const matches = element.match(regex)
-    for (match of matches) {
-      let items = []
-      match = match.replace(/\(|\)|:/g, '')
-      match = match.match(/\S+/g)
-      items.push(match[0])
-      items.push(match.slice(1, match.length))
-      array.push(items)
+    if (matches !== null) {
+      for (match of matches) {
+        let items = []
+        match = match.replace(/\(|\)|\[|\]|"|:/g, ' ')
+        match = match.match(/\S+/g)
+        // Add weights
+        const wRegex = /(\S+)\*(\d+)/
+        let name = match[0]
+        let contents = match.slice(1, match.length)
+        let weightedContents = []
+        for (item of contents) {
+          if (wRegex.test(item)) {
+            let groups = wRegex.exec(item)
+            let counter = groups[2] > 100 ? 100 : groups[2]
+            for (let i = 0; i < counter; i++) {
+              weightedContents.push(groups[1])
+            }
+          } else {
+            weightedContents.push(item)
+          }
+        }
+        array.push([name, weightedContents])
+      }
     }
     return array
   }
@@ -121,10 +136,10 @@ function takeInput() {
   const myMin = Number(document.getElementById("min").value)
   const myMax = Number(document.getElementById("max").value)
   const myCount = Number(document.getElementById("words").value)
-  const mySequences = listFormat(document.getElementById("patterns").value)
+  const myPatterns = listFormat(document.getElementById("patterns").value)
   const myFilters = listFormat(document.getElementById("filters").value)
-  const myReplacements = format(document.getElementById("changes").value, /[^\s,]+\s*:[^,]+/g)
-  const myPhonemes = format(document.getElementById("phonemes").value, /[^\s,]\s*:[^,]+/g)
+  const myRewrites = format(document.getElementById("rewrites").value, /[^\s,]+\s*:[^,]*/g)
+  const myCharacters = format(document.getElementById("characters").value, /[^\s,]\s*:[^,]*/g)
   const myDuplicate = document.getElementById("duplicates").checked
 
   const newLine = document.getElementById("new").checked
@@ -133,10 +148,10 @@ function takeInput() {
     myMin,
     myMax,
     myCount,
-    mySequences,
+    myPatterns,
     myFilters,
-    myReplacements,
-    myPhonemes,
+    myRewrites,
+    myCharacters,
     myDuplicate
   )
 // Clear words
@@ -147,6 +162,39 @@ function takeInput() {
     list.innerHTML += item + (newLine ? '\n' : ' ')
   }
 // Information
+  const divider = document.getElementById("divider")
+  divider.style.display = "block"
   const info = document.getElementById("info")
   info.innerHTML = '~ ' + myLexicon.length + ' words generated ~'
+}
+
+function copyToClipboard() {
+  const copy = document.getElementById("copy")
+  const list = document.getElementById("lexicon").innerHTML
+  let info = document.getElementById("info")
+  if (list !== '') {
+    navigator.clipboard.writeText(list)
+    info.innerHTML = "~ Copied to clipboard! ~"
+  }
+}
+
+
+// IPA shit
+function showIPA() {
+  const ipa = document.getElementById("ipaChart")
+  ipa.style.display !== "block"
+    ? ipa.style.display = "block"
+    : ipa.style.display = "none"
+  
+}
+
+const letters = document.getElementsByClassName("letter")
+for (let letter of letters) {
+  letter.addEventListener("mousedown", (event) => {
+    let active = document.activeElement.id
+    if (active === "characters" || active === "rewrites" || active === "patterns" || active === "filters") {
+      document.activeElement.value += letter.innerHTML
+    }
+    event.preventDefault()
+  })
 }
