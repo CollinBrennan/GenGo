@@ -1,5 +1,9 @@
+html {
+  overflow-y: scroll;
+}
+
 body {
-  background-color: hsl(0, 0%, 99%);
+  background-color: #FCFCFC;
   font-family: arial;
   font-size: 16px;
   font-weight: bold;
@@ -68,6 +72,10 @@ textarea, input, button {
   border-radius: 10px;
   border: 1px solid #AAA;
   outline: none;
+}
+
+textarea:focus, input[type=text]:focus, input[type=number]:focus {
+  border: 1px dotted #F67280;
 }
 
 textarea, input[type=text], input[type=number] {
@@ -145,18 +153,35 @@ input[type=checkbox]:checked {
 
 /* IPA stuff */
 table {
-  flex-flow: wrap;
+  border-top: 2px dotted lightgrey;
+  border-left: 2px dotted lightgrey;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  font-size: 16px;
+  margin-top: 4px;
 }
 
-.letter {
+.letter, .punct, th {
   width: 32px;
   height: 32px;
-  font-size: 16px;
-  margin: 0;
   border-bottom: 2px dotted lightgrey;
   border-right: 2px dotted lightgrey;
-  background-color: inherit;
+}
+
+.letter, .punct {
+  cursor: pointer;
   color: #F67280;
+  font-weight: normal;
+}
+
+.punct {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.letter:hover, .punct:hover {
+  background-color: #F5F5F5;
 }
 
 #divider {
@@ -171,7 +196,7 @@ hr {
   padding: 0;
 }
 
-#info, #ipaChart {
+#info {
   font-weight: normal;
   font-style: italic;
   padding-top: 6px;

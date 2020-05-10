@@ -45,11 +45,324 @@
             <input id="filters" type="text" spellcheck="false" value="aa, ii, uu, oo, ee, ji, wu, wo, ti">
           </div>
 
+          <div id="ipaChart" style="display: none;">
+            <table id="consonants">
+              <thead>
+                <th></th>
+                <th colspan="2">Bilabial</th>
+                <th colspan="2">Labio-dental</th>
+                <th colspan="2">Dental</th>
+                <th colspan="2">Alveolar</th>
+                <th colspan="2">Post-Alveolar</th>
+                <th colspan="2">Retroflex</th>
+                <th colspan="2">Palatal</th>
+                <th colspan="2">Velar</th>
+                <th colspan="2">Uvular</th>
+                <th colspan="2">Pharyngeal</th>
+                <th colspan="2">Glottal</th>
+              </thead>
+              <tbody>
+                <tr>
+                  <th>Plosive</th>
+                  <td class="letter">p</td>
+                  <td class="letter">b</td>
+                  <td class="letter" colspan="2"></td>
+                  <td class="letter" colspan="3">t</td>
+                  <td class="letter" colspan="3">d</td>
+                  <td class="letter">ʈ</td>
+                  <td class="letter">ɖ</td>
+                  <td class="letter">c</td>
+                  <td class="letter">ɟ</td>
+                  <td class="letter">k</td>
+                  <td class="letter">g</td>
+                  <td class="letter">q</td>
+                  <td class="letter">ɢ</td>
+                  <td class="letter" colspan="2"></td>
+                  <td class="letter">ʔ</td>
+                  <td class="letter"></td>
+                </tr>
+                <tr>
+                  <th>Nasal</th>
+                  <td class="letter"></td>
+                  <td class="letter">m</td>
+                  <td class="letter"></td>
+                  <td class="letter">ɱ</td>
+                  <td class="letter" colspan="3"></td>
+                  <td class="letter" colspan="3">n</td>
+                  <td class="letter"></td>
+                  <td class="letter">ɳ</td>
+                  <td class="letter"></td>
+                  <td class="letter">ɲ</td>
+                  <td class="letter"></td>
+                  <td class="letter">ŋ</td>
+                  <td class="letter"></td>
+                  <td class="letter">ɴ</td>
+                  <td class="letter" colspan="4"></td>
+                </tr>
+                <tr>
+                  <th>Trill</th>
+                  <td class="letter"></td>
+                  <td class="letter">ʙ</td>
+                  <td class="letter" colspan="5"></td>
+                  <td class="letter" colspan="3">r</td>
+                  <td class="letter" colspan="7"></td>
+                  <td class="letter">ʀ</td>
+                  <td class="letter" colspan="4"></td>
+                </tr>
+                <tr>
+                  <th>Tap or Flap</th>
+                  <td class="letter" colspan="7"></td>
+                  <td class="letter" colspan="3">ɾ</td>
+                  <td class="letter"></td>
+                  <td class="letter">ɽ</td>
+                  <td class="letter" colspan="10"></td>
+                </tr>
+                <tr>
+                  <th>Fricative</th>
+                  <td class="letter">ɸ</td>
+                  <td class="letter">β</td>
+                  <td class="letter">f</td>
+                  <td class="letter">v</td>
+                  <td class="letter">θ</td>
+                  <td class="letter">ð</td>
+                  <td class="letter">s</td>
+                  <td class="letter">z</td>
+                  <td class="letter">ʃ</td>
+                  <td class="letter">ʒ</td>
+                  <td class="letter">ʂ</td>
+                  <td class="letter">ʐ</td>
+                  <td class="letter">ç</td>
+                  <td class="letter">ʝ</td>
+                  <td class="letter">x</td>
+                  <td class="letter">ɣ</td>
+                  <td class="letter">χ</td>
+                  <td class="letter">ʁ</td>
+                  <td class="letter">ħ</td>
+                  <td class="letter">ʕ</td>
+                  <td class="letter">h</td>
+                  <td class="letter">ɦ</td>
+                </tr>
+                <tr>
+                  <th>Lateral Fricative</th>
+                  <td class="letter" colspan="4"></td>
+                  <td class="letter" colspan="3">ɬ</td>
+                  <td class="letter" colspan="3">ɮ</td>
+                  <td class="letter" colspan="12"></td>
+
+                </tr>
+                <tr>
+                  <th>Approximant</th>
+                  <td class="letter" colspan="3"></td>
+                  <td class="letter">ʋ</td>
+                  <td class="letter" colspan="3"></td>
+                  <td class="letter" colspan="3">ɹ</td>
+                  <td class="letter"></td>
+                  <td class="letter">ɻ</td>
+                  <td class="letter"></td>
+                  <td class="letter">j</td>
+                  <td class="letter"></td>
+                  <td class="letter">ɰ</td>
+                  <td class="letter" colspan="6"></td>
+                </tr>
+                <tr>
+                  <th>Lateral Approximant</th>
+                  <td class="letter" colspan="7"></td>
+                  <td class="letter" colspan="3">l</td>
+                  <td class="letter"></td>
+                  <td class="letter">ɭ</td>
+                  <td class="letter"></td>
+                  <td class="letter">ʎ</td>
+                  <td class="letter"></td>
+                  <td class="letter">ʟ</td>
+                  <td class="letter" colspan="6"></td>
+                </tr>
+                <tr>
+                  <th>Click</th>
+                  <td class="letter" colspan="2">ʘ</td>
+                  <td class="letter" colspan="2"></td>
+                  <td class="letter" colspan="2">ǀ</td>
+                  <td class="letter" colspan="2">ǁ</td>
+                  <td class="letter" colspan="2">ǃ</td>
+                  <td class="letter" colspan="2">‼</td>
+                  <td class="letter" colspan="2">ǂ</td>
+                  <td class="letter" colspan="8"></td>
+                </tr>
+                <tr>
+                  <th>Voiced Implosive</th>
+                  <td class="letter" colspan="2">ɓ</td>
+                  <td class="letter" colspan="2"></td>
+                  <td class="letter" colspan="6">ɗ</td>
+                  <td class="letter" colspan="2"></td>
+                  <td class="letter" colspan="2">ʄ</td>
+                  <td class="letter" colspan="2">ɠ</td>
+                  <td class="letter" colspan="2">ʛ</td>
+                  <td class="letter" colspan="4"></td>
+                </tr>
+                <tr>
+                  <th>Affricate</th>
+                  <td class="letter" colspan="6"></td>
+                  <td class="letter">t͡s</td>
+                  <td class="letter">d͡z</td>
+                  <td class="letter">t͡ʃ</td>
+                  <td class="letter">d͡ʒ</td>
+                  <td class="letter">ʈ͡ʂ</td>
+                  <td class="letter">ɖ͡ʐ</td>
+                  <td class="letter">t͡ɕ</td>
+                  <td class="letter">d͡ʑ</td>
+                  <td class="letter" colspan="8"></td>
+                </tr>
+              </tbody>
+            </table>
+            <table id="vowels">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th colspan="2">Front</th>
+                  <th colspan="2">Near-front</th>
+                  <th colspan="2">Central</th>
+                  <th colspan="2">Near-back</th>
+                  <th colspan="2">Back</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th>Close</th>
+                  <td class="letter">i</td>
+                  <td class="letter">y</td>
+                  <td class="letter" colspan="2"></td>
+                  <td class="letter">ɨ</td>
+                  <td class="letter">ʉ</td>
+                  <td class="letter" colspan="2"></td>
+                  <td class="letter">ɯ</td>
+                  <td class="letter">u</td>
+                </tr>
+                <tr>
+                  <th>Near-close</th>
+                  <td class="letter" colspan="2"></td>
+                  <td class="letter">ɪ</td>
+                  <td class="letter">ʏ</td>
+                  <td class="letter" colspan="2"></td>
+                  <td class="letter"></td>
+                  <td class="letter">ʊ</td>
+                  <td class="letter" colspan="2"></td>
+                </tr>
+                <tr>
+                  <th>Close-mid</th>
+                  <td class="letter">e</td>
+                  <td class="letter">ø</td>
+                  <td class="letter" colspan="2"></td>
+                  <td class="letter">ɘ</td>
+                  <td class="letter">ɵ</td>
+                  <td class="letter" colspan="2"></td>
+                  <td class="letter">ɤ</td>
+                  <td class="letter">o</td>
+                </tr>
+                <tr>
+                  <th>Mid</th>
+                  <td class="letter" colspan="4"></td>
+                  <td class="letter" colspan="2">ə</td>
+                  <td class="letter" colspan="4"></td>
+                </tr>
+                <tr>
+                  <th>Open-mid</th>
+                  <td class="letter">ɛ</td>
+                  <td class="letter">œ</td>
+                  <td class="letter" colspan="2"></td>
+                  <td class="letter">ɜ</td>
+                  <td class="letter">ɞ</td>
+                  <td class="letter" colspan="2"></td>
+                  <td class="letter">ʌ</td>
+                  <td class="letter">ɔ</td>
+                </tr>
+                <tr>
+                  <th>Near-open</th>
+                  <td class="letter" colspan="2"></td>
+                  <td class="letter">æ</td>
+                  <td class="letter"></td>
+                  <td class="letter" colspan="2">ɐ</td>
+                  <td class="letter" colspan="4"></td>
+                </tr>
+                <tr>
+                  <th>Open</th>
+                  <td class="letter">a</td>
+                  <td class="letter">ɶ</td>
+                  <td class="letter" colspan="6"></td>
+                  <td class="letter">ɑ</td>
+                  <td class="letter">ɒ</td>
+                </tr>
+              </tbody>
+            </table>
+            <table id="other">
+              <thead>
+                <tr>
+                  <th colspan="10">Other Symbols</th>
+                  <th colspan="15">Diacritics</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="letter">ʍ</td>
+                  <td class="letter">w</td>
+                  <td class="letter">ɥ</td>
+                  <td class="letter">ʜ</td>
+                  <td class="letter">ʢ</td>
+                  <td class="letter">ʡ</td>
+                  <td class="letter">ɕ</td>
+                  <td class="letter">ʑ</td>
+                  <td class="letter">ɺ</td>
+                  <td class="letter">ɧ</td>
+                  <td class="punct" value="&#x0325;">◌&#x0325;</td>
+                  <td class="punct" value="&#x0324;">◌&#x0324;</td>
+                  <td class="punct" value="&#x032A;">◌&#x032A;</td>
+                  <td class="punct" value="&#x032C;">◌&#x032C;</td>
+                  <td class="punct" value="&#x0330;">◌&#x0330;</td>
+                  <td class="punct" value="&#x033A;">◌&#x033A;</td>
+                  <td class="punct" value="&#x033C;">◌&#x033C;</td>
+                  <td class="punct" value="&#x033B;">◌&#x033B;</td>
+                  <td class="punct" value="&#x031A;">◌&#x031A;</td>
+                  <td class="punct" value="&#x0339;">◌&#x0339;</td>
+                  <td class="punct" value="&#x0303;">◌&#x0303;</td>
+                  <td class="punct" value="&#x031C;">◌&#x031C;</td>
+                  <td class="punct" value="&#x031F;">◌&#x031F;</td>
+                  <td class="punct" value="&#x0320;">◌&#x0320;</td>
+                  <td class="punct" value="&#x0308;">◌&#x0308;</td>
+                </tr>
+                <tr>
+                  <td class="letter">ˈ</td>
+                  <td class="letter">ˌ</td>
+                  <td class="letter">ʼ</td>
+                  <td class="letter">ʴ</td>
+                  <td class="letter">ʰ</td>
+                  <td class="letter">ʱ</td>
+                  <td class="letter">ʲ</td>
+                  <td class="letter">ʷ</td>
+                  <td class="letter">ˠ</td>
+                  <td class="letter">ˤ</td>
+                  <td class="punct" value="&#x033D;">◌&#x033D;</td>
+                  <td class="punct" value="&#x031D;">◌&#x031D;</td>
+                  <td class="punct" value="&#x0329;">◌&#x0329;</td>
+                  <td class="punct" value="&#x031E;">◌&#x031E;</td>
+                  <td class="punct" value="&#x032F;">◌&#x032F;</td>
+                  <td class="punct" value="&#x0318;">◌&#x0318;</td>
+                  <td class="punct" value="&#x0319;">◌&#x0319;</td>
+                  <td class="punct" value="&#x0306;">◌&#x0306;</td>
+                  <td class="punct" value="&#x030B;">◌&#x030B;</td>
+                  <td class="punct" value="&#x0301;">◌&#x0301;</td>
+                  <td class="punct" value="&#x0304;">◌&#x0304;</td>
+                  <td class="punct" value="&#x0300;">◌&#x0300;</td>
+                  <td class="punct" value="&#x030F;">◌&#x030F;</td>
+                  <td class="punct" value="&#x035C;">◌&#x035C;</td>
+                  <td class="punct" value="&#x0361;">◌&#x0361;</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
           <div class="options">
             <div>
+              <button id="ipa" type="button" onclick="showIPA();">IPA<i class="fas fa-caret-down"></i></button>
               <input id="generate" type="submit" value="Generate">
-              <button id="copy" type="button" onclick="copyToClipboard();"><i class="far fa-clipboard"></i></button>
-              <button id="ipa" type="button" onclick="showIPA();">IPA</button>
+              <button id="copy" type="button" onclick="copyToClipboard();"><i class="far fa-copy"></i></i></button>
             </div>
             <div>
               <label for="words">Words</label>
@@ -76,102 +389,6 @@
         </div>
 
       </form>
-
-      <div id="ipaChart" hidden>
-        <hr>
-        <table>
-          <button class="letter">ɨ</button>
-          <button class="letter">ʉ</button>
-          <button class="letter">ɯ</button>
-          <button class="letter">ɪ</button>
-          <button class="letter">ʏ</button>
-          <button class="letter">ʊ</button>
-          <button class="letter">ø</button>
-          <button class="letter">ɘ</button>
-          <button class="letter">ɵ</button>
-          <button class="letter">ɤ</button>
-          <button class="letter">ɛ</button>
-          <button class="letter">œ</button>
-          <button class="letter">ɜ</button>
-          <button class="letter">ɞ</button>
-          <button class="letter">ʌ</button>
-          <button class="letter">ɔ</button>
-          <button class="letter">æ</button>
-          <button class="letter">ɐ</button>
-          <button class="letter">ɶ</button>
-          <button class="letter">ɑ</button>
-          <button class="letter">ɒ</button>
-          <button class="letter">ʈ</button>
-          <button class="letter">ɖ</button>
-          <button class="letter">ɟ</button>
-          <button class="letter">ɢ</button>
-          <button class="letter">ʔ</button>
-          <button class="letter">ɱ</button>
-          <button class="letter">ɳ</button>
-          <button class="letter">ɲ</button>
-          <button class="letter">ɴ</button>
-          <button class="letter">ʙ</button>
-          <button class="letter">ʀ</button>
-          <button class="letter">ⱱ</button>
-          <button class="letter">ɾ</button>
-          <button class="letter">ɽ</button>
-          <button class="letter">ɸ</button>
-          <button class="letter">β</button>
-          <button class="letter">θ</button>
-          <button class="letter">ð</button>
-          <button class="letter">ʃ</button>
-          <button class="letter">ʒ</button>
-          <button class="letter">ʂ</button>
-          <button class="letter">ʐ</button>
-          <button class="letter">ç</button>
-          <button class="letter">ʝ</button>
-          <button class="letter">ɣ</button>
-          <button class="letter">χ</button>
-          <button class="letter">ʁ</button>
-          <button class="letter">ħ</button>
-          <button class="letter">ʕ</button>
-          <button class="letter">ɦ</button>
-          <button class="letter">ɬ</button>
-          <button class="letter">ɮ</button>
-          <button class="letter">ʋ</button>
-          <button class="letter">ɹ</button>
-          <button class="letter">ɻ</button>
-          <button class="letter">ɰ</button>
-          <button class="letter">ɭ</button>
-          <button class="letter">ʎ</button>
-          <button class="letter">ʟ</button>
-          <button class="letter">ʘ</button>
-          <button class="letter">ǀ</button>
-          <button class="letter">ǃ</button>
-          <button class="letter">ǂ</button>
-          <button class="letter">ǁ</button>
-          <button class="letter">ɓ</button>
-          <button class="letter">ɗ</button>
-          <button class="letter">ʄ</button>
-          <button class="letter">ɠ</button>
-          <button class="letter">ʛ</button>
-          <button class="letter">ʍ</button>
-          <button class="letter">ɥ</button>
-          <button class="letter">ʜ</button>
-          <button class="letter">ʢ</button>
-          <button class="letter">ʡ</button>
-          <button class="letter">ɕ</button>
-          <button class="letter">ʑ</button>
-          <button class="letter">ɺ</button>
-          <button class="letter">ɧ</button>
-          <button class="letter">t͡s</button>
-          <button class="letter">t͡ʃ</button>
-          <button class="letter">t͡ɕ</button>
-          <button class="letter">ʈ͡ʂ</button>
-          <button class="letter">d͡z</button>
-          <button class="letter">d͡ʒ</button>
-          <button class="letter">d͡ʑ</button>
-          <button class="letter">ɖ͡ʐ</button>
-          <button class="letter">ʰ</button>
-          <button class="letter">ʲ</button>
-          <button class="letter">ʷ</button>
-        </table>
-      </div>
 
       <div id="divider" hidden>
         <hr>

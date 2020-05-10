@@ -27,7 +27,7 @@
 
       <hr>
 
-      <h2 id="gGbout">About</h2>
+      <h2 id="gAbout">About</h2>
       <p>GenGo is generator that makes words from different groups of characters. It is most often used for constructed languages and worldbuilding. It's good for anything from creating a lexicon for your conlang to names for your fictional population.</p>
 
       <hr>
@@ -129,9 +129,23 @@
       <ul>
         <li>sa<span class="c1">nm</span>a → saa</li>
       </ul>
+      <p><em style="font-size: 14px">(Not yet implemented)</em> Rewrites and filters also accept group names. If we had the pattern 'CVVC' and this rewrite...</p>
+      <blockquote>
+        <span class="c1">VV</span>: V
+      </blockquote>
+      <ul>
+        <li>s<span class="c1">ai</span>m → s<span class="c1">i</span>m</li>
+      </ul>
+      <p><em style="font-size: 14px">(Not yet implemented)</em> If you wanted a character that is also a name of a character group, you can put it in double <span class="c1">quotes</span>...</p>
+      <blockquote>
+        VV: <span class="c1">"</span>V<span class="c1">"</span>
+      </blockquote>
+      <ul>
+        <li>saim → sVm</li>
+      </ul>
       <p>You can also use <a href="#gWeights">character weights</a> in rewrites.</p>
-
       <hr>
+      
      
       <h2 id="gFilters">Filters & Options</h2>
       <p>Filters - If a word contains any of the characters or clusters, the whole word will be removed from the final word list.</p>
@@ -139,7 +153,7 @@
       <p>Syllable min and max - The minimum and maximum number of patterns allowed in a word</p>
       <p>Duplicates - Removes any duplicates in the final word list. The more complicated your words can be, the less likely duplicates are to be generated</p>
       <p>List - Displays each word on a new line instead of a paragraph</p>
-
+      <p>IPA - Stands for 'International Phonetic Alphabet', which you can learn more about <a href="https://www.internationalphoneticalphabet.org/" target="_blank">here</a>
       <hr>
 
     </div>

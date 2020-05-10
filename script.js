@@ -3,14 +3,15 @@
 // -max possible words counter
 // -Remove spaces from final word
 // -night mode
-// -add ipa chart under form
+// -add seperate IPA chart for mobile, dont add table head just make it a group of characters
+// -add titles to IPA symbols
 
 // To Do:
 // -add LITERAL notation ('C')V(N), C'V'N
 // -make phonetic groups possible in replacemenets and filters (VV: V)
 
 // To Fix:
-// 
+// -text input wiggles when its position is fixed
 
 function generate(
   _min,
@@ -24,7 +25,7 @@ function generate(
 ) {
 // Variables
   const min = _min
-  const max = _max < min ? min : _max
+  const max = _max
   const count = _count
   const patterns = unique(_patterns)
   const filters = unique(_filters)
@@ -95,6 +96,7 @@ function generate(
   return lexicon
 }
 
+// Format inputs and display list to the page
 function takeInput() {
 // Functions
   function format(element, regex) {
@@ -154,6 +156,8 @@ function takeInput() {
     myCharacters,
     myDuplicate
   )
+// Fix form inputs
+  myMax < myMin ? document.getElementById("max").value = myMin : null
 // Clear words
   const list = document.getElementById("lexicon")
   list.innerHTML = ''
@@ -168,6 +172,8 @@ function takeInput() {
   info.innerHTML = '~ ' + myLexicon.length + ' words generated ~'
 }
 
+
+// Copy list
 function copyToClipboard() {
   const copy = document.getElementById("copy")
   const list = document.getElementById("lexicon").innerHTML
@@ -179,18 +185,23 @@ function copyToClipboard() {
 }
 
 
-// IPA shit
+// Show IPA chart
 function showIPA() {
   const ipa = document.getElementById("ipaChart")
-  ipa.style.display !== "block"
-    ? ipa.style.display = "block"
-    : ipa.style.display = "none"
-  
+  const button = document.getElementById("ipa")
+  if (ipa.style.display !== "block") {
+    ipa.style.display = "block"
+    button.innerHTML = "IPA<i class='fas fa-caret-up'></i>"
+  } else {
+    ipa.style.display = "none"
+    button.innerHTML = "IPA<i class='fas fa-caret-down'>"
+  }
 }
 
+// When symbol is clicked, add it to the current focused input
 const letters = document.getElementsByClassName("letter")
 for (let letter of letters) {
-  letter.addEventListener("mousedown", (event) => {
+  letter.addEventListener("mousedown", () => {
     let active = document.activeElement.id
     if (active === "characters" || active === "rewrites" || active === "patterns" || active === "filters") {
       document.activeElement.value += letter.innerHTML
@@ -198,3 +209,59 @@ for (let letter of letters) {
     event.preventDefault()
   })
 }
+
+const puncts = document.getElementsByClassName("punct")
+for (let punct of puncts) {
+  punct.addEventListener("mousedown", () => {
+    let active = document.activeElement.id
+    if (active === "characters" || active === "rewrites" || active === "patterns" || active === "filters") {
+      document.activeElement.value += punct.getAttribute("value")
+    }
+    event.preventDefault()
+  })
+}
+
+// Fix input's position if scrolled too far down
+if  (!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+  function resetInputs () {
+    document.getElementById("characters").style.position = "initial"
+    document.getElementById("characters").style.maxWidth = "initial"
+
+    document.getElementById("rewrites").style.position = "initial"
+    document.getElementById("rewrites").style.maxWidth = "initial"
+    
+    document.getElementById("patterns").style.position = "initial"
+    document.getElementById("patterns").style.maxWidth = "initial"
+    
+    document.getElementById("filters").style.position = "initial"
+    document.getElementById("filters").style.maxWidth = "initial"
+  }
+
+  function fixInput() {
+    let active = document.activeElement
+    if (
+      active.id === "characters" 
+      || active.id === "rewrites" 
+      || active.id === "patterns" 
+      || active.id === "filters"
+    ) {
+      if (document.getElementById("ipaChart").style.display === "block") {
+        if (window.scrollY > 300 && window.scrollY < 1200) {
+          active.style.position = "fixed"
+          active.style.maxWidth = "480px"
+          let calculate = window.innerWidth/2 - active.offsetWidth/2
+          active.style.left = calculate + 'px'
+          active.style.top = "16px"
+        } else {
+          resetInputs()
+        } 
+      } else {
+        resetInputs()
+      }
+    } else {
+      resetInputs()
+    }
+  }
+  window.setInterval(fixInput, 250)
+}
+
