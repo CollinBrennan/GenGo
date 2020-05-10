@@ -83,6 +83,7 @@ textarea, input[type=text], input[type=number] {
 }
 
 textarea {
+  font-family: monospace;
   position: relative;
   resize: none;
   width: 98%;
@@ -160,6 +161,11 @@ table {
   width: 100%;
   font-size: 16px;
   margin-top: 4px;
+  border-radius: 10px;
+}
+
+tbody > tr:last-child > td:last-child {
+  border-bottom-right-radius: 10px;
 }
 
 .letter, .punct, th {
@@ -170,7 +176,9 @@ table {
 }
 
 .letter, .punct {
+  font-size: 16px;
   cursor: pointer;
+  background-color: inherit;
   color: #F67280;
   font-weight: normal;
 }
@@ -224,7 +232,7 @@ p, ul, blockquote {
 blockquote {
   background-color: #EEE;
   max-width: 480px;
-  font-family:'Courier New', Courier, monospace;
+  font-family: monospace;
 }
 
 ul {

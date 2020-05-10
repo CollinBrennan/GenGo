@@ -7,11 +7,11 @@
 // -add titles to IPA symbols
 
 // To Do:
-// -add LITERAL notation ('C')V(N), C'V'N
+// -add LITERAL notation ("C")V(N), C"V"N
 // -make phonetic groups possible in replacemenets and filters (VV: V)
 
 // To Fix:
-// -text input wiggles when its position is fixed
+//
 
 function generate(
   _min,
@@ -89,10 +89,10 @@ function generate(
       lexicon = unique(lexicon)
     }
 // Return
-  console.log('Characters:', characters, '\n')
-  console.log('Rewrites:', rewrites, '\n')
-  console.log('Filters:', filters, '\n')
-  console.log('Patterns:', patterns, '\n')
+  // console.log('Characters:', characters, '\n')
+  // console.log('Rewrites:', rewrites, '\n')
+  // console.log('Filters:', filters, '\n')
+  // console.log('Patterns:', patterns, '\n')
   return lexicon
 }
 
@@ -184,10 +184,12 @@ function copyToClipboard() {
   }
 }
 
+// Test if user is on mobile device
+const onMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
 
 // Show IPA chart
 function showIPA() {
-  const ipa = document.getElementById("ipaChart")
+  const ipa = !onMobile ? document.getElementById("ipaChart") : document.getElementById("ipaMobile")
   const button = document.getElementById("ipa")
   if (ipa.style.display !== "block") {
     ipa.style.display = "block"
@@ -222,19 +224,25 @@ for (let punct of puncts) {
 }
 
 // Fix input's position if scrolled too far down
-if  (!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+if (!onMobile) {
   function resetInputs () {
     document.getElementById("characters").style.position = "initial"
-    document.getElementById("characters").style.maxWidth = "initial"
+    document.getElementById("characters").style.left = "initial"
+    document.getElementById("characters").style.top = "initial"
 
     document.getElementById("rewrites").style.position = "initial"
-    document.getElementById("rewrites").style.maxWidth = "initial"
+    document.getElementById("rewrites").style.left = "initial"
+    document.getElementById("rewrites").style.top = "initial"
     
     document.getElementById("patterns").style.position = "initial"
     document.getElementById("patterns").style.maxWidth = "initial"
+    document.getElementById("patterns").style.left = "initial"
+    document.getElementById("patterns").style.top = "initial"
     
     document.getElementById("filters").style.position = "initial"
     document.getElementById("filters").style.maxWidth = "initial"
+    document.getElementById("filters").style.left = "initial"
+    document.getElementById("filters").style.top = "initial"
   }
 
   function fixInput() {
@@ -247,11 +255,12 @@ if  (!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navi
     ) {
       if (document.getElementById("ipaChart").style.display === "block") {
         if (window.scrollY > 300 && window.scrollY < 1200) {
-          active.style.position = "fixed"
-          active.style.maxWidth = "480px"
-          let calculate = window.innerWidth/2 - active.offsetWidth/2
+          active.style.position = "initial"
+          let calculate = window.innerWidth/2 - (active.id === "rewrites" ? active.offsetWidth : active.innerWidth)/2
           active.style.left = calculate + 'px'
           active.style.top = "16px"
+          active.style.maxWidth = "480px"
+          active.style.position = "fixed"
         } else {
           resetInputs()
         } 
