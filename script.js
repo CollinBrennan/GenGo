@@ -42,6 +42,8 @@ function generate(
   const writeWeights = new Map(_writeWeights)
 
   let lexicon = []
+  // Test if patterns are valid
+  if (patterns.length < 1) {return lexicon}
 
 // Functions
   function unique(list) {
@@ -120,12 +122,12 @@ function generate(
       lexicon = unique(lexicon)
     }
 // Return
-  // console.log('Characters:', characters, '\n')
-  // console.log('Character Weights:', charWeights, '\n')
-  // console.log('Rewrites:', rewrites, '\n')
-  // console.log('Rewrite Weights:', writeWeights, '\n')
-  // console.log('Filters:', filters, '\n')
-  // console.log('Patterns:', patterns, '\n')
+  console.log('Characters:', characters, '\n')
+  console.log('Character Weights:', charWeights, '\n')
+  console.log('Rewrites:', rewrites, '\n')
+  console.log('Rewrite Weights:', writeWeights, '\n')
+  console.log('Filters:', filters, '\n')
+  console.log('Patterns:', patterns, '\n')
   return lexicon
 }
 
