@@ -137,7 +137,6 @@ function takeInput() {
   function format(element, regex) {
     const array = []
   // Remove comments
-    element = element.replace(/\/\/[^,\n]*/g, '')
     element = element.replace(/\/[^\s,]*/g, '')
   // Create the arrays
     const matches = element.match(regex)
@@ -156,7 +155,6 @@ function takeInput() {
 
   function listFormat(element) {
   // Remove comments
-    element = element.replace(/\/\/[^,\n]*/g, '')
     element = element.replace(/\/[^\s,]*/g, '')
   // Split list
     const regex = /[^\s,][^,]*[^\s,]|[^\s,]/g
