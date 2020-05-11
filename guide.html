@@ -50,12 +50,24 @@
       <h3 id="gWeights">Weights</h3>
       <p>You can assign weight to a character to make it more likely to be picked using an <span class="c1">asterisk</span> followed by a <span class="c2">number</span>.</p>
       <p>In this example...</p>
-      <blockquote>C: p t k m n s w<span class="c1">*</span><span class="c2">5</span> l j</blockquote>
+      <blockquote>
+        C: p t k m n s w<span class="c1">*</span><span class="c2">5</span> l j
+      </blockquote>
       <p>...the letter 'w' is 5 times more likely to be picked than the rest of the characters individually.</p>
       <p>Since characters have a default weight of 1, you can use a <span class="c2">decimal</span> to make characters less likely to be picked...</p>
-      <blockquote>
-        C: p t k m n s w*<span class="c2">.25</span> l j
-      </blockquote>
+      <blockquote>C: p t k m n s w*<span class="c2">.25</span> l j</blockquote>
+      <p>Giving a character a weight of 0 still gives it a chance of being picked. If you don't want a character to be picked at all, you can <a href="gComments">comment</a> it out.
+
+      <h3 id="gComments">Commenting</h3>
+      <p>Sometimes you might want to remove characters from a group without actually deleting them from the text field. To do this, you can use a <span class="c1">slash</span> to "comment" them out.
+      <p>For example, this...</p>
+      <blockquote>C: p t k m n s <span class="c1">/</span>w l j</blockquote>
+      <p>Gets interpreted as this...</p>
+      <blockquote>C: p t k m n s l j</blockquote>
+      <p>To comment out a group entirely, just put the slash before the name of the group...</p>
+      <blockquote><span class="c1">/</span>C: p t k m n s w l j</blockquote>
+      <p>Commenting out also works in rewrites, patterns, and filters.</p>
+
 
       <hr>
 
