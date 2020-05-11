@@ -12,6 +12,7 @@
     <header>
       <a href="index.html"><i class="fas fa-align-center"></i> GenGo</a>
       <a href="guide.html"><i class="fas fa-book"></i> Guide</a>
+      <a href="log.html"><i class="fas fa-sticky-note"></i> Change Log</a>
       <a href="https://github.com/CollinBrennan/GenGo"><i class="fab fa-github"></i> GitHub</a>
     </header>
 
@@ -47,10 +48,14 @@
       <p>Character groups can be written on the same line or across several lines, as long as they are seperated by a comma.</p>
 
       <h3 id="gWeights">Weights</h3>
-      <p>You can assign weight to a character to make it more likely to be picked using an <span class="c1">asterisk</span> followed by a natural <span class="c2">number</span> up to 100.</p>
+      <p>You can assign weight to a character to make it more likely to be picked using an <span class="c1">asterisk</span> followed by a <span class="c2">number</span>.</p>
       <p>In this example...</p>
       <blockquote>C: p t k m n s w<span class="c1">*</span><span class="c2">5</span> l j</blockquote>
       <p>...the letter 'w' is 5 times more likely to be picked than the rest of the characters individually.</p>
+      <p>Since characters have a default weight of 1, you can use a <span class="c2">decimal</span> to make characters less likely to be picked...</p>
+      <blockquote>
+        C: p t k m n s w*<span class="c2">.25</span> l j
+      </blockquote>
 
       <hr>
 
