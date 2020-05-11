@@ -14,7 +14,7 @@
 // -favicon
 
 // To Fix:
-// 
+// -IPA buttons don't work if first letter of input
 
 function generate(
   _min,
@@ -262,13 +262,12 @@ for (let letter of letters) {
     if (active.id === "characters" || active.id === "rewrites" || active.id === "patterns" || active.id === "filters") {
       let start = active.selectionStart;
       let end = active.selectionEnd;
-      if (active.selectionStart || active.selectionStart === '0') {
+      console.log(start)
+      if (start || start <= '0') {
         active.value = active.value.substring(0, start)
             + letter.innerHTML
             + active.value.substring(end, active.value.length);
-      } else {
-          myField.value += myValue;
-      }
+      } 
       active.setSelectionRange(start + 1, start + 1)
     }
     event.preventDefault()
@@ -282,13 +281,12 @@ for (let punct of puncts) {
     if (active.id === "characters" || active.id === "rewrites" || active.id === "patterns" || active.id === "filters") {
       let start = active.selectionStart;
       let end = active.selectionEnd;
-      if (active.selectionStart || active.selectionStart === '0') {
+      console.log(start)
+      if (start || start <= '0') {
         active.value = active.value.substring(0, start)
-            + punct.getAttribute("value")
+            + punct.value
             + active.value.substring(end, active.value.length);
-      } else {
-          myField.value += myValue;
-      }
+      } 
       active.setSelectionRange(start + 1, start + 1)
     }
     event.preventDefault()
