@@ -284,7 +284,7 @@ for (let punct of puncts) {
       console.log(start)
       if (start || start <= '0') {
         active.value = active.value.substring(0, start)
-            + punct.getAttribute("value")
+            + punct.value
             + active.value.substring(end, active.value.length);
       } 
       active.setSelectionRange(start + 1, start + 1)
