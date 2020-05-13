@@ -14,7 +14,7 @@
 // -favicon
 
 // To Fix:
-// -IPA buttons don't work if first letter of input
+// -Affricate buttons put cursor after the first letter of the affricate
 
 function generate(
   _min,
@@ -254,6 +254,23 @@ function showIPA() {
   }
 }
 
+// If number is greater than max number, set number to max
+const inputs = document.getElementsByTagName("input")
+const numbers = []
+for (let input of inputs) {
+  if (input.type === "number") {
+    numbers.push(input)
+  }
+}
+for (let number of numbers) {
+  number.addEventListener("input", () => {
+    let max = number.max
+    if (Number(number.value) > Number(max)) {
+      number.value = max
+    }
+  })
+}
+
 // When symbol is clicked, add it to the current focused input
 const letters = document.getElementsByClassName("letter")
 for (let letter of letters) {
@@ -262,13 +279,13 @@ for (let letter of letters) {
     if (active.id === "characters" || active.id === "rewrites" || active.id === "patterns" || active.id === "filters") {
       let start = active.selectionStart;
       let end = active.selectionEnd;
-      console.log(start)
       if (start || start <= '0') {
         active.value = active.value.substring(0, start)
             + letter.innerHTML
             + active.value.substring(end, active.value.length);
-      } 
-      active.setSelectionRange(start + 1, start + 1)
+      }
+      let newStart = start + letter.innerHTML.length
+      active.setSelectionRange(newStart, newStart)
     }
     event.preventDefault()
   })
@@ -284,7 +301,7 @@ for (let punct of puncts) {
       console.log(start)
       if (start || start <= '0') {
         active.value = active.value.substring(0, start)
-            + punct.value
+            + punct.getAttribute("value")
             + active.value.substring(end, active.value.length);
       } 
       active.setSelectionRange(start + 1, start + 1)
